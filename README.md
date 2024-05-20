@@ -1,4 +1,3 @@
-<div align="justify">
 ## About
 **NotYetAnotherNightshade** (NYAN) is a graph variational encoder as described in the article "Application of variational graph encoders as an effective generalist algorithm in holistic computer-aided drug design" published in Nature Machine Intelligence, 2023. In NYAN, the low-dimension latent variables derived from the variational graph autoencoder are leveraged as a kind of universal molecular representation, yielding remarkable performance and versatility throughout the drug discovery process.
 
