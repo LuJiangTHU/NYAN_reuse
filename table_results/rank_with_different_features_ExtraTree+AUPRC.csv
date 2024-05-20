@@ -1,0 +1,11 @@
+method,CYP450_CYP2C19.csv,Cardiotoxicity_Cardiotoxicity-10.csv,Carcinogenicity_Carcinogenicity.csv,Endocrine Disruption_NR-aromatase.csv,Hepatotoxicity_Hepatotoxicity.csv,Developmental and Reproductive Toxicity_Developmental Toxicity.csv,Clinical Toxicity_Clinical toxicity.csv,Endocrine Disruption_SR-p53.csv,Endocrine Disruption_NR-AhR.csv,Endocrine Disruption_NR-AR-LBD.csv,Irritation and Corrosion_Eye Corrosion.csv,Endocrine Disruption_SR-ARE.csv,Cardiotoxicity_Cardiotoxicity-5.csv,Endocrine Disruption_NR-ER.csv,Cardiotoxicity_Cardiotoxicity-1.csv,CYP450_CYP2D6.csv,Respiratory Toxicity_Respiratory Toxicity.csv,CYP450_CYP3A4.csv,Endocrine Disruption_NR-ER-LBD.csv,CYP450_CYP1A2.csv,Developmental and Reproductive Toxicity_Reproductive Toxicity.csv,Endocrine Disruption_NR-PPAR-gamma.csv,Endocrine Disruption_NR-AR.csv,Mutagenicity_Ames Mutagenicity.csv,Cardiotoxicity_Cardiotoxicity-30.csv,Irritation and Corrosion_Eye Irritation.csv,Endocrine Disruption_SR-ATAD5.csv,CYP450_CYP2C9.csv,Endocrine Disruption_SR-HSE.csv,Endocrine Disruption_SR-MMP.csv
+NYAN_latent,1,3,8,1,1,3,7,2,3,2,7,3,1,2,4,1,4,4,4,4,6,6,2,2,2,8,3,4,4,3
+Morgan512,8,6,4,6,9,6,5,10,8,7,8,8,6,9,2,7,8,5,6,9,9,8,5,5,7,6,7,6,8,8
+Atompair,6,10,6,4,7,8,10,6,5,8,5,5,7,3,8,6,3,7,1,3,4,2,4,6,10,7,4,8,5,5
+ECFP2,9,4,1,10,5,7,1,8,7,9,10,10,9,7,10,10,6,6,8,8,3,9,7,8,8,4,9,9,2,10
+Mordred,4,2,10,3,2,1,6,3,2,3,4,4,2,4,3,4,2,9,2,5,10,4,1,7,3,2,2,5,3,2
+Rdkit2D,3,1,3,2,3,2,2,1,1,1,1,1,3,1,5,2,1,1,3,1,8,1,3,1,1,1,1,7,1,1
+Morgan1024,2,5,5,7,8,5,4,7,6,5,6,7,5,6,1,5,5,2,5,7,7,5,6,4,6,5,5,2,7,7
+Topological Torsion,5,9,7,5,10,10,9,5,9,6,9,9,10,5,7,8,7,3,7,6,2,7,8,9,9,9,6,1,9,6
+MACCS,10,7,9,9,6,4,3,9,10,10,3,6,4,10,9,9,9,10,10,10,1,10,9,10,5,10,10,10,10,9
+Avalon,7,8,2,8,4,9,8,4,4,4,2,2,8,8,6,3,10,8,9,2,5,3,10,3,4,3,8,3,6,4

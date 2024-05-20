@@ -1,0 +1,6 @@
+[ 2023-11-05 18:03:03,471][cascade_classifier.fit_transform] X_groups_train.shape=[(800, 10)],y_train.shape=(800,),X_groups_test.shape=no_test,y_test.shape=no_test
+[ 2023-11-05 18:03:03,472][cascade_classifier.fit_transform] group_dims=[10]
+[ 2023-11-05 18:03:03,472][cascade_classifier.fit_transform] group_starts=[0]
+[ 2023-11-05 18:03:03,472][cascade_classifier.fit_transform] group_ends=[10]
+[ 2023-11-05 18:03:03,472][cascade_classifier.fit_transform] X_train.shape=(800, 10),X_test.shape=(0, 10)
+[ 2023-11-05 18:03:03,472][cascade_classifier.fit_transform] [layer=0] look_indexs=[0], X_cur_train.shape=(800, 10), X_cur_test.shape=(0, 10)

@@ -1,0 +1,9 @@
+method,CYP450_CYP2C19.csv,Cardiotoxicity_Cardiotoxicity-10.csv,Carcinogenicity_Carcinogenicity.csv,Endocrine Disruption_NR-aromatase.csv,Hepatotoxicity_Hepatotoxicity.csv,Developmental and Reproductive Toxicity_Developmental Toxicity.csv,Clinical Toxicity_Clinical toxicity.csv,Endocrine Disruption_SR-p53.csv,Endocrine Disruption_NR-AhR.csv,Endocrine Disruption_NR-AR-LBD.csv,Irritation and Corrosion_Eye Corrosion.csv,Endocrine Disruption_SR-ARE.csv,Cardiotoxicity_Cardiotoxicity-5.csv,Endocrine Disruption_NR-ER.csv,Cardiotoxicity_Cardiotoxicity-1.csv,CYP450_CYP2D6.csv,Respiratory Toxicity_Respiratory Toxicity.csv,CYP450_CYP3A4.csv,Endocrine Disruption_NR-ER-LBD.csv,CYP450_CYP1A2.csv,Developmental and Reproductive Toxicity_Reproductive Toxicity.csv,Endocrine Disruption_NR-PPAR-gamma.csv,Endocrine Disruption_NR-AR.csv,Mutagenicity_Ames Mutagenicity.csv,Cardiotoxicity_Cardiotoxicity-30.csv,Irritation and Corrosion_Eye Irritation.csv,Endocrine Disruption_SR-ATAD5.csv,CYP450_CYP2C9.csv,Endocrine Disruption_SR-HSE.csv,Endocrine Disruption_SR-MMP.csv
+ExtraTree,3,2,1,2,2,3,3,2,1,3,3,1,1,7,1,2,1,2,5,2,2,1,3,1,2,3,1,3,2,2
+DF,1,3,3,1,1,4,4,1,2,1,1,2,4,4,2,1,2,1,1,1,3,2,1,2,3,1,2,1,1,1
+XGB,4,8,8,5,6,8,8,6,4,5,7,5,7,1,8,6,8,5,4,4,5,4,2,5,8,5,3,4,6,6
+RF,5,4,7,3,3,1,5,3,3,2,4,4,2,6,3,4,3,4,3,5,4,6,5,4,4,4,6,6,4,5
+SVM,2,1,2,7,4,2,1,4,7,4,2,3,3,5,5,3,4,3,7,3,7,5,7,3,1,2,4,2,3,3
+Adaboost,8,7,6,8,8,6,2,8,8,6,6,8,8,8,7,8,7,8,8,8,8,8,8,8,7,8,8,8,8,8
+GBDT,6,5,4,4,5,5,7,5,5,7,5,6,5,2,4,5,5,6,6,6,1,3,4,6,6,6,7,5,5,4
+LGB,7,6,5,6,7,7,6,7,6,8,8,7,6,3,6,7,6,7,2,7,6,7,6,7,5,7,5,7,7,7

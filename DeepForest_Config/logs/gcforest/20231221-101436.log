@@ -1,0 +1,10 @@
+[ 2023-12-21 10:14:37,210][cascade_classifier.fit_transform] X_groups_train.shape=[(800, 10)],y_train.shape=(800,),X_groups_test.shape=no_test,y_test.shape=no_test
+[ 2023-12-21 10:14:37,210][cascade_classifier.fit_transform] group_dims=[10]
+[ 2023-12-21 10:14:37,210][cascade_classifier.fit_transform] group_starts=[0]
+[ 2023-12-21 10:14:37,210][cascade_classifier.fit_transform] group_ends=[10]
+[ 2023-12-21 10:14:37,210][cascade_classifier.fit_transform] X_train.shape=(800, 10),X_test.shape=(0, 10)
+[ 2023-12-21 10:14:37,210][cascade_classifier.fit_transform] [layer=0] look_indexs=[0], X_cur_train.shape=(800, 10), X_cur_test.shape=(0, 10)
+[ 2023-12-21 10:14:37,907][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_0.predict)=88.75%
+[ 2023-12-21 10:14:38,534][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_1.predict)=90.62%
+[ 2023-12-21 10:14:39,154][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_2.predict)=91.88%
+[ 2023-12-21 10:14:39,778][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_3.predict)=90.00%
