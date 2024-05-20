@@ -75,7 +75,7 @@ python encoder_59endpoints_smiles.py
 The generated NYAN latent representations will be tab-delimited e saved into the folder of `/datasets/MTL/`.
 
 ## Enhancing the multi-endpoint acute toxicity prediction using NYAN
-For the multi-task learning experiments on acute toxicity prediction, we firstly used the re-trained NYAN 325K model to derive the NYAN latent representations for the chemical compounds in acute toxicity dataset (see the previous section), and then transfer these NYAN latent representations to our another code project ('Acute_Toxicity_NYAN', see https://github.com/LuJiangTHU/Acute_Toxicity_NYAN.git) to perform multi-endpoint acute toxicity prediction experiments.
+For the multi-task learning experiments on acute toxicity prediction, we firstly used the re-trained NYAN 325K model to derive the NYAN latent representations for the chemical compounds in acute toxicity dataset (see the previous section), and then transfer these NYAN latent representations to our another code project (`Acute_Toxicity_NYAN`, see https://github.com/LuJiangTHU/Acute_Toxicity_NYAN.git) to perform multi-endpoint acute toxicity prediction experiments.
 
 
 
