@@ -1,39 +1,23 @@
-<div align="center">
-  <br />
-  <p>
-    <a href="https://github.com/Chokyotager/NotYetAnotherNightshade"><img src="/art/NYAN.png" alt="banner" /></a>
-  </p>
-  <br />
-  <p>
-  </p>
-</div>
-
+<div align="justify">
 ## About
-**NotYetAnotherNightshade** (NYAN) is a graph variational encoder as described in the manuscript "Application of variational graph encoders as an effective generalist algorithm in holistic computer-aided drug design".
+**NotYetAnotherNightshade** (NYAN) is a graph variational encoder as described in the article "Application of variational graph encoders as an effective generalist algorithm in holistic computer-aided drug design" published in Nature Machine Intelligence, 2023. In NYAN, the low-dimension latent variables derived from the variational graph autoencoder are leveraged as a kind of universal molecular representation, yielding remarkable performance and versatility throughout the drug discovery process.
 
-It allows for the embedding of molecules into a continuous latent space, and subsequent surrogate model training for molecular property prediction not limited to drug design and other chemistry applications.
+We assess the reusability of NYAN and comprehensively investigate its applicability within the context of specific chemical toxicity prediction. We used more expanded predictive toxicology datasets sourced from TOXRIC, a comprehensive and standardized toxicology database (<span style="color:red;">Lianlian Wu, Bowei Yan, Junshan Han, Ruijiang Li, Jian Xiao, Song He, Xiaochen Bo. TOXRIC: a comprehensive database of toxicological data and benchmarks, Nucleic Acids Research, 2022, https://toxric.bioinforai.tech/home</span>).
 
-The latent space method as described can also be used to perform highly accelerated, very high throughput virtual screening for computer-aided drug discovery of up to a few billion compounds.
+For toxicity prediction tasks, we compiled 30 assay endpoints related to toxic effects, organ toxicity, and clinical toxicity. In the case of acute toxicity prediction, the dataset includes 59 endpoints with 80,081 unique compounds and 122,594 measurements.
 
-This repository contains the code we used in training of new encoders, construction of surrogate models, and latent space potentiation as described in the manuscript. We have also included utility tools for decoding and encoding molecules, so that you can fit and train your own surrogate models.
+Across these professional toxicity datasets, the toxicity prediction performance via NYAN latent representation and other popular molecular feature representations are experimentally benchmarked, and the adaptation of the NYAN latent representation to other downstream surrogate models are also explored.
 
-## Paper
+Furthermore, we integrate the variational graph encoder of NYAN with multi-task learning paradigm to boost the multi-endpoint acute toxicity prediction. The code of this part can be found in our another code repository: https://github.com/LuJiangTHU/Acute_Toxicity_NYAN.git
 
-![Figure abstract](https://github.com/Chokyotager/NotYetAnotherNightshade/blob/main/art/abstract.png?raw=true)
-Please read the paper for more details:
+This repository contains the code we used in reproducing the original results in ADMET and Tox21 experiments, benchmarking the performance of different molecular representation methods and the exploration of competent surrogate models in toxicity prediction based on the TOXRIC database. 
 
-Publication: https://www.nature.com/articles/s42256-023-00683-9
 
-Publication DOI: https://doi.org/10.1038/s42256-023-00683-9
-
-Preprint: https://www.biorxiv.org/content/10.1101/2023.01.11.523575v1
-
-Preprint DOI: https://doi.org/10.1101/2023.01.11.523575
 
 ## Installation
 ```sh
-git clone https://github.com/Chokyotager/NotYetAnotherNightshade.git
-cd NotYetAnotherNightshade
+git clone https://github.com/LuJiangTHU/NYAN_reuse.git
+cd NYAN_reuse
 ```
 
 ```sh
@@ -41,87 +25,58 @@ conda env create -f environment.yml
 conda activate nyan
 ```
 
-There is also an explicit link file in requirements.txt for all Conda packages.
 
-NYAN has been tested on two separate Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-58-generic x86_64) systems. It theoretically should work for any environment so long as all package requirements are fulfilled.
+## Reproduction
+In this code repository, most of core codes were directly downloaded from the code repository provided by the authors of original article (https://github.com/Chokyotager/NotYetAnotherNightshade.git). Original article used 650K molecular data from ZINC database to train their framework and then obtained a model named `ZINC-extmodel5hk-3M`. In contrast, we only used half of training data of original paper (325K molecules versus original 650K, and 325K is a subset of 650K) to retrain the NYAN framework and then obtained another model `ZINC-extmodel5hk-3M-325K`. Our reproduction experiments were based on this retrained NYAN model.
 
-Installation should take under ten minutes in most cases.
+### Obtaining the training data and retraining NYAN
+The `/datasets/centres.smi` contains 700K molecular SMILEs. Original article used the anterior 650K as its training data, while we used the anterior 325K SMILEs. You can sequentially use the 3 scripts, including `get_maccs_morgan.py`, `get_mordred.py`, and `make_3m.py` in the folder of `/misc-code/fingerprinting/`, to obtain the combined training set named `'datasets/3m_512.tsv'`.
 
-## Practical demonstration!
-There is an IPython Notebook that you can open using Jupyter and/or other notebooks (not tested) named `NYAN_demo.ipynb`. It contains steps on how to download the data, train it, and then potentiate molecules.
-
-Thank you very much to the (currently) anonymous reviewer for suggesting this!
-
-## Usage
-
-By default, the saved model `ZINC-extmodel5hk-3M` is used. This is the same model which was used throughout the manuscript to generate the figures. You should be able to reproduce the results accordingly.
-
-If you want to train your own model, look at the "training your own model" section below.
-
-### Conversion of SMILES to latent space
-This tool converts any SMILES molecule into a continuous mathematical space of 64 dimensions.
-
-Please use "encode_smiles.py".
-
-`python3 encode_smiles.py <input SMILES file> <output file>`
-
-The output will be tab-delimited. You can then use this latent space to train surrogate models to your liking. I.e. you can use SKLearn to build ExtraTrees regressors/classifiers to predict ADMET properties.
-
-You can look into datasets/example.smi for an example input file.
-
-The runtime per molecule should not exceed 10 seconds after program initialisation. However, faster GPUs (such as the Nvidia RTX 3090®) that we tested this on can process up to 500 molecules per second.
-
-### Conversion of latent space into molecular fingerprints
-This tool does the opposite and converts a 64-dimensional latent space into molecular fingerprints and Mordred descriptors.
-
-`python3 decode_latent.py <input latent TSV> <output file>`
-
-The first column of the input latent TSV is treated as an ID. Subsequent columns are of the latent space. In total, there should be 65 columns in your input file. All elements should be delimited by tabs. An example of an input file that you can feed in here is the output from `encode_smiles.py`.
-
-The output will be tab-delimited. You can use this to infer molecular properties or match against a known fingerprint database.
-
-You can look into datasets/example_latents.tsv for an example input file.
-
-The runtime per molecule should not exceed 10 seconds after program initialisation.
-
-### Training your own encoder
-If you want to train your own model, please edit `config.json`.
-
-You can then train your model using `python3 train.py`
-
-### Other experiments done in the paper
-We haven't gotten around to build user-friendly tools for molecular potentiation yet. The code that was used in the paper that was used to do this can be found in misc-code/NYAN-potentiator.
-
-We have also added one in misc-code/referfence-encoding-decoding for latent space and FP searching. To use the stuff in misc-code/, you would probably have to change the code directly.
-
-## Contribution
-Users are welcome to contribute to the development of the model through pull-requests.
-
-Our future direction is to make this tool as user-friendly as possible, and to release individual surrogate models that we have trained. Please continue to check back on this repo for the latest updates!
-
-## Maintenance
-The current project is maintained by Hilbert Lam and Robbe Pincket. Correspondence can be found in the manuscript. You can also contact Hilbert / Robbe via email there or (informally) on Discord, using the handles ChocoParrot#8925, Kroppeb#2845 respectively (we're chill people).
-
-## Reproduction of results in the paper
-Because we used a large variety of datasets (each with different licenses), we are unable to clone these datasets into this repository. You can reproduce the results we obtained by downloading the respective datasets, and converting them into latent vectors using NYAN.
-
-The latent spaces can then be trained and evaluated accordingly using methods from SKLearn or any other applicable machine learning library.
-
-## License
-License details can be found in the LICENSE file.
-
-## Citation
+The `config.json` can be used to control the training configurations including the number of training data. Using the following command to retrain your own NYAN framework:
+```sh
+python train.py
 ```
-@article{lam_application_2023,
-	title = {Application of variational graph encoders as an effective generalist algorithm in computer-aided drug design},
-	issn = {2522-5839},
-	url = {https://www.nature.com/articles/s42256-023-00683-9},
-	doi = {10.1038/s42256-023-00683-9},
-	language = {en},
-	urldate = {2023-07-11},
-	journal = {Nature Machine Intelligence},
-	author = {Lam, Hilbert Yuen In and Pincket, Robbe and Han, Hao and Ong, Xing Er and Wang, Zechen and Hinks, Jamie and Wei, Yanjie and Li, Weifeng and Zheng, Liangzhen and Mu, Yuguang},
-	month = jul,
-	year = {2023},
-}
+ 
+### Prediction on ADMET
+Using the following command to preform the ADMET prediction:
+```sh
+python NYAN_pred_for_ADMET.py
 ```
+
+The output results will be saved into `/results_reproduction_ADMET/`.
+
+### Prediction on Tox21
+Using the following command to preform the Tox21 prediction:
+```sh
+python NYAN_pred_for_tox21.py
+```
+
+The output results will be saved into the folder of `/result_reproduction_tox21/`.
+
+ 
+## Benchmarking of different molecular representation methods
+Please use "otherFG_pred_for_toxric.py" to run on the 30 datasets from TOXRIC database with different molecular features inlcluding Rdkit2D, Mordred, Avalon, Atom pair, Morgan512, Morgan1024, Topological Torsion, MACCS and ECFP2:
+```sh
+python otherFG_pred_for_toxric.py
+```
+The output will be tab-delimited and the detailed results w.r.t different molecular representation will be saved into the folder of `/result_otherFG_toxric/`. 
+
+## Exploring different surrogate models
+Please use "NYAN_pred_for_toxric.py" to run on the 30 datasets from TOXRIC database with other popular toxicity classification algorithm including Extra Tree, Deep Forest, Support Vector Machine (SVM), Random Forest (RF), Adaboost, Light GBM (LGB), gradient-boosted decision tree (GBDT), and Xgboost (XGB):
+```sh
+python NYAN_pred_for_toxric.py
+```
+The output will be tab-delimited and the detailed results w.r.t different surrogate models will be saved into the folder of `/result_toxric/`.
+
+## Deriving the NYAN latent representations for acute toxicity data
+Please use "encoder_59endpoints_smiles.py" to derive the 64-dimension NYAN latent representation for the 80081 chemical compounds in acute toxicity dataset:
+```sh
+python encoder_59endpoints_smiles.py
+```
+The generated NYAN latent representations will be tab-delimited e saved into the folder of `/datasets/MTL/`.
+
+## Enhancing the multi-endpoint acute toxicity prediction using NYAN
+For the multi-task learning experiments on acute toxicity prediction, we firstly used the re-trained NYAN 325K model to derive the NYAN latent representations for the chemical compounds in acute toxicity dataset (see the previous section), and then transfer these NYAN latent representations to our another code project ('Acute_Toxicity_NYAN', see https://github.com/LuJiangTHU/Acute_Toxicity_NYAN.git) to perform multi-endpoint acute toxicity prediction experiments.
+
+
+
