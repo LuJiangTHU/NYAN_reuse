@@ -29,7 +29,7 @@ conda activate nyan
 In this code repository, most of core codes were directly downloaded from the code repository provided by the authors of original article (https://github.com/Chokyotager/NotYetAnotherNightshade.git). Original article used 650K molecular data from ZINC database to train their framework and then obtained a model named `ZINC-extmodel5hk-3M`. In contrast, we only used half of training data of original paper (325K molecules versus original 650K, and 325K is a subset of 650K) to retrain the NYAN framework and then obtained another model `ZINC-extmodel5hk-3M-325K`. Our reproduction experiments were based on this retrained NYAN model.
 
 ### Obtaining the training data and retraining NYAN
-The `/datasets/centres.smi` contains 700K molecular SMILEs. Original article used the anterior 650K as its training data, while we used the anterior 325K SMILEs. You can sequentially use the 3 scripts, including `get_maccs_morgan.py`, `get_mordred.py`, and `make_3m.py` in the folder of `/misc-code/fingerprinting/`, to obtain the combined training set named `'datasets/3m_512.tsv'`.
+The `/datasets/centres.smi` contains 700K molecular SMILEs. Original article used the anterior 650K as its training data, while we used the anterior 325K SMILEs. You can sequentially use the 3 scripts, including `get_maccs_morgan.py`, `get_mordred.py`, and `make_3m.py` in the folder of `/misc-code/fingerprinting/`, to obtain the combined training set named `'datasets/3m_512.tsv'` (Since the generated `'3m_512.tsv'` is too large, we did not directly place it in this repository, so please generate it by yourself).
 
 The `config.json` can be used to control the training configurations including the number of training data. Using the following command to retrain your own NYAN framework:
 ```sh
@@ -72,7 +72,7 @@ Please use "encoder_59endpoints_smiles.py" to derive the 64-dimension NYAN laten
 ```sh
 python encoder_59endpoints_smiles.py
 ```
-The generated NYAN latent representations will be tab-delimited e saved into the folder of `/datasets/MTL/`.
+The generated NYAN latent representations will be tab-delimited and saved into the folder of `/datasets/MTL/` (Since the generated NYAN latent representation files are too large, we did not directly place them in this repository, so please generate them by yourself).
 
 ## Enhancing the multi-endpoint acute toxicity prediction using NYAN
 For the multi-task learning experiments on acute toxicity prediction, we firstly used the re-trained NYAN 325K model to derive the NYAN latent representations for the chemical compounds in acute toxicity dataset (see the previous section), and then transfer these NYAN latent representations to our another code project (`Acute_Toxicity_NYAN`, see https://github.com/LuJiangTHU/Acute_Toxicity_NYAN.git) to perform multi-endpoint acute toxicity prediction experiments.
